@@ -7,6 +7,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { PersonService } from '../../services/persona.service';
 import { DatePipe } from '@angular/common';
+import { PlanetaService } from '../../services/planeta.service';
 
 describe('PersonaFormularioComponent', () => {
 
@@ -14,6 +15,7 @@ describe('PersonaFormularioComponent', () => {
   let fixture: ComponentFixture<PersonaFormularioComponent>;
   let clieneteEstado: PersonaEstado;
   let personaService: PersonService;
+  let planetaService: PlanetaService;
   let genericService: GenericService;
   let activatedRoute: ActivatedRoute;
   let datePipe: DatePipe;
@@ -38,6 +40,7 @@ describe('PersonaFormularioComponent', () => {
       clieneteEstado,
       genericService,
       personaService,
+      planetaService,
       activatedRoute,
       datePipe
     );
