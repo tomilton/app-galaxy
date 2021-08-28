@@ -1,0 +1,51 @@
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="init" fxLayoutGap="20px">
+    <h1>Listado de planetas</h1>
+    <button id="btn_agregar" type="button" (click)="add()" mat-mini-fab color="primary">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
+<mat-divider></mat-divider>
+<br>
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="20px">
+
+    <table mat-table [dataSource]="planetas" class="mat-elevation-z8">
+        <ng-container matColumnDef="pkplaneta">
+            <th mat-header-cell *matHeaderCellDef> PK </th>
+            <td mat-cell *matCellDef="let planeta"> {{planeta.pkplaneta}} </td>
+        </ng-container>
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let planeta"> {{planeta.nombre}} </td>
+        </ng-container>
+        <ng-container matColumnDef="periodoRotacion">
+            <th mat-header-cell *matHeaderCellDef> Periodo Rotación </th>
+            <td mat-cell *matCellDef="let planeta"> {{planeta.periodoRotacion}} </td>
+        </ng-container>
+        <ng-container matColumnDef="diametro">
+            <th mat-header-cell *matHeaderCellDef> Diametro </th>
+            <td mat-cell *matCellDef="let planeta"> {{planeta.diametro}} </td>
+        </ng-container>
+        <ng-container matColumnDef="clima">
+            <th mat-header-cell *matHeaderCellDef> Clima </th>
+            <td mat-cell *matCellDef="let planeta"> {{planeta.clima}} </td>
+        </ng-container>
+        <ng-container matColumnDef="terreno">
+            <th mat-header-cell *matHeaderCellDef> Terreno </th>
+            <td mat-cell *matCellDef="let planeta"> {{planeta.terreno}} </td>
+        </ng-container>
+        <ng-container matColumnDef="contador">
+            <th mat-header-cell *matHeaderCellDef> Cantidad de visitas </th>
+            <td mat-cell *matCellDef="let planeta"> {{planeta.contador}} </td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let planeta">
+                <a color="primary" mat-raised-button (click)="update(planeta)">
+                    <mat-icon>remove_red_eye</mat-icon>
+                </a>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

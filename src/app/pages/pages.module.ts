@@ -14,15 +14,20 @@ import { MaterialModule } from '../material/material.module';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AddPersonaComponent } from './add-persona/add-persona.component';
+import { AddPlanetaComponent } from './add-planeta/add-planeta.component';
 import { ListPersonaComponent } from './list-persona/list-persona.component';
+import { ListPlanetaComponent } from './list-planeta/list-planeta.component';
 import { PersonaEstado } from '../services/persona.estado';
+import { PlanetaEstado } from '../services/planeta.estado';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     PagesComponent,
     AddPersonaComponent,
-    ListPersonaComponent
+    AddPlanetaComponent,
+    ListPersonaComponent,
+    ListPlanetaComponent
 
   ],
   exports: [
@@ -40,7 +45,8 @@ import { PersonaEstado } from '../services/persona.estado';
     FlexLayoutModule,
   ],
   providers: [
-    PersonaEstado
+    PersonaEstado,
+    PlanetaEstado
   ]
 })
 export class PagesModule { }

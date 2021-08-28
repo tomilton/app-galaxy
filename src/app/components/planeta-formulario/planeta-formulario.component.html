@@ -1,0 +1,111 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+
+
+    <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="20px" *ngIf="contadorField > 0">
+        <h1>Cantidad de visitas</h1>
+        <div class="example-button-row">
+            <button mat-mini-fab>{{contadorField}}</button>
+        </div>
+    </div>
+    <mat-divider *ngIf="contadorField > 0"></mat-divider>
+    <br>
+
+    <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="40px" fxLayout.xs="column">
+
+        <div fxFlex="80" fxLayout="column">
+
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
+                <mat-form-field fxFlex="100" fxLayout.xs="column">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput type="text" formControlName="nombre" required>
+                    <mat-error *ngIf="nombreField?.hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field fxFlex="100" fxLayout.xs="column">
+                    <mat-label>Periodo Rotación</mat-label>
+                    <input matInput type="text" formControlName="periodoRotacion" required>
+                    <mat-error *ngIf="periodoRotacionField?.hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field fxFlex="100" fxLayout.xs="column">
+                    <mat-label>Diametro</mat-label>
+                    <input matInput type="text" formControlName="diametro" required>
+                    <mat-error *ngIf="diametroField?.hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
+                <mat-form-field fxFlex="100" fxLayout.xs="column">
+                    <mat-label>Clima</mat-label>
+                    <input matInput type="text" formControlName="clima" required>
+                    <mat-error *ngIf="climaField?.hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field fxFlex="100" fxLayout.xs="column">
+                    <mat-label>Terreno</mat-label>
+                    <input matInput type="text" formControlName="terreno" required>
+                    <mat-error *ngIf="terrenoField?.hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <br>
+            <div fxLayout fxLayoutAlign="end">
+                <button type="button" (click)="cancelar()" mat-raised-button>
+                    Cancelar
+                </button>
+                &nbsp;
+                <button *ngIf="!isNew" type="button" (click)="nuevo()" mat-raised-button>
+                    Nuevo
+                </button>
+                &nbsp;
+                <button mat-raised-button color="primary">
+                    Guardar
+                </button>
+            </div>
+
+
+        </div>
+
+
+    </div>    
+</form>
+
+<br />
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="20px" *ngIf="!isNew">
+
+    <table mat-table [dataSource]="listaPersonas" class="mat-elevation-z8">
+        <ng-container matColumnDef="pkpersona">
+            <th mat-header-cell *matHeaderCellDef> PK </th>
+            <td mat-cell *matCellDef="let persona"> {{persona.pkpersona}} </td>
+        </ng-container>
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let persona"> {{persona.nombre}} </td>
+        </ng-container>
+        <ng-container matColumnDef="apellido">
+            <th mat-header-cell *matHeaderCellDef> Apellido </th>
+            <td mat-cell *matCellDef="let persona"> {{persona.apellido}} </td>
+        </ng-container>
+        <ng-container matColumnDef="genero">
+            <th mat-header-cell *matHeaderCellDef> Genero </th>
+            <td mat-cell *matCellDef="let persona"> {{persona.genero}} </td>
+        </ng-container>
+        <ng-container matColumnDef="fechaNacimiento">
+            <th mat-header-cell *matHeaderCellDef> Fecha Nacimiento </th>
+            <td mat-cell *matCellDef="let persona"> {{persona.fechaNacimiento}} </td>
+        </ng-container>
+        <ng-container matColumnDef="contador">
+            <th mat-header-cell *matHeaderCellDef> Cantidad de visitas </th>
+            <td mat-cell *matCellDef="let persona"> {{persona.contador}} </td>
+        </ng-container>            
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
