@@ -25,6 +25,8 @@ export class PersonService {
 
   getPersonaById(id: number) { return this.http.get<Persona>(`${this.url}/getPersonaPorId?id=${id}`) }
 
-  sumarVisita(persona: Persona){  return this.http.get<Respuesta>(`${this.url}/sumarVisita?pkpersona=${persona.pkpersona}`)  }
+  sumarVisita(persona: Persona) { return this.http.get<Respuesta>(`${this.url}/sumarVisita?pkpersona=${persona.pkpersona}`) }
+
+  getPersonasByPlaneta(pkplaneta: number) { return this.http.get<Persona[]>(`${this.url}/personsByPlaneta?pkplaneta=${pkplaneta}`) }
 
 }
