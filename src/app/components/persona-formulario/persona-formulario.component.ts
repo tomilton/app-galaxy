@@ -10,6 +10,7 @@ import { PersonaEstado } from '../../services/persona.estado';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Persona } from '../../interfaces/persona.interface';
 import { PersonService } from '../../services/persona.service';
+import { PlanetaService } from '../../services/planeta.service';
 
 @Component({
   selector: 'app-persona-formulario',
@@ -36,6 +37,7 @@ export class PersonaFormularioComponent implements OnInit, OnDestroy {
     private personaEstado: PersonaEstado,
     private genericService: GenericService,
     private personService: PersonService,
+    private planetaService: PlanetaService,
     private activatedRoute: ActivatedRoute,
     private datePipe: DatePipe
   ) {
@@ -45,18 +47,7 @@ export class PersonaFormularioComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.isNew = true;
     this.id = -1;
-    this.cargarCatalogos();
-    this.listaPlanetas.push(
-      {
-        cantidadPersona: 0,
-        clima: "CALIDO",
-        contador: 0,
-        diametro: 16.3,
-        nombre: "TIERRA",
-        periodoRotacion: "2 AÑOS",
-        pkplaneta: 1
-      }
-    );
+    this.cargarCatalogos();    
     this.escucharEditar();
     this.escucharRoute();
   }
@@ -122,6 +113,7 @@ export class PersonaFormularioComponent implements OnInit, OnDestroy {
 
   cargarCatalogos(): void {
     this.genericService.getGeneros().pipe(tap(res => this.listaGeneros = res)).subscribe();
+    this.planetaService.listPlanetas().pipe(tap(res => this.listaPlanetas = res)).subscribe();    
   }
 
   save(): void {
