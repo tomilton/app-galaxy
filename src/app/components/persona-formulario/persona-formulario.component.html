@@ -1,0 +1,105 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+
+
+    <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="20px" *ngIf="contadorField > 0">
+        <h1>Cantidad de visitas</h1>
+        <div class="example-button-row">
+            <button mat-mini-fab>{{contadorField}}</button>
+        </div>
+    </div>
+    <mat-divider *ngIf="contadorField > 0"></mat-divider>
+    <br>
+
+    <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="40px" fxLayout.xs="column">
+
+        <div fxFlex="80" fxLayout="column">
+
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
+                <mat-form-field fxFlex="100" fxLayout.xs="column">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput type="text" formControlName="nombre" required>
+                    <mat-error *ngIf="nombreField?.hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field fxFlex="100" fxLayout.xs="column">
+                    <mat-label>Apellido</mat-label>
+                    <input matInput type="text" formControlName="apellido" required>
+                    <mat-error *ngIf="apellidoField?.hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field fxFlex="100" fxLayout.xs="column">
+                    <mat-label>Genero</mat-label>
+                    <mat-select formControlName="genero" required>
+                        <mat-option *ngFor="let genero of listaGeneros" [value]="genero.id">
+                            {{ genero.descripcion }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="generoField?.hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
+                <mat-form-field fxFlex="100" fxLayout.xs="column">
+                    <input readonly matInput id="FECHA_NACIMIENTO" [matDatepicker]="picker" [attr.maxlength]="10"
+                        placeholder="Fecha Nacimiento" formControlName="fechaNacimiento" />
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="fechaNacimientoField?.hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field fxFlex="100" fxLayout.xs="column">
+                    <mat-label>Edad</mat-label>
+                    <input matInput type="text" formControlName="edad" required>
+                    <mat-error *ngIf="edadField?.hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field fxFlex="100" fxLayout.xs="column">
+                    <mat-label>Peso</mat-label>
+                    <input matInput type="text" formControlName="peso" required>
+                    <mat-error *ngIf="pesoField?.hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
+                <mat-form-field fxFlex="100" fxLayout.xs="column">
+                    <mat-label>Planeta</mat-label>
+                    <mat-select [compareWith]="compareObjects" formControlName="planeta" required>
+                        <mat-option *ngFor="let planeta of listaPlanetas" [value]="planeta">
+                            {{ planeta.nombre }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="planetaField?.hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <br>
+            <div fxLayout fxLayoutAlign="end">
+                <button type="button" (click)="cancelar()" mat-raised-button>
+                    Cancelar
+                </button>
+                &nbsp;
+                <button *ngIf="!isNew" type="button" (click)="nuevo()" mat-raised-button>
+                    Nuevo
+                </button>
+                &nbsp;
+                <button mat-raised-button color="primary">
+                    Guardar
+                </button>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</form>

@@ -1,0 +1,52 @@
+<app-mensajes></app-mensajes>
+
+<mat-sidenav-container fullscreen>
+
+  <mat-sidenav #sidenav mode="push">
+
+    <mat-toolbar color="primary">
+      <span>Menú</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <a routerLink="list-persona" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>people</mat-icon>
+        <span>Listado de personas</span>
+      </a>
+   
+      <a routerLink="list-persona" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>public</mat-icon>
+        <span>Listado de planetas</span>
+      </a>
+
+      <a mat-list-item routerLink="/login">
+        <mat-icon>login</mat-icon> Cerrar
+      </a>
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span class="spacer"></span>
+
+    <button mat-button>
+      Logout
+    </button>
+  </mat-toolbar>
+
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>
