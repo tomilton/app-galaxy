@@ -27,4 +27,6 @@ export class PlanetaService {
 
   sumarVisita(persona: Planeta) { return this.http.get<Respuesta>(`${this.url}/sumarVisita?pkplaneta=${persona.pkplaneta}`) }
 
+  getTopPlanetas(top: number) { return this.http.get<Planeta[]>(`${this.url}/planetasMasVisitados?top=${top}`) }
+
 }

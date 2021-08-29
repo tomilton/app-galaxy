@@ -17,6 +17,7 @@ import { AddPersonaComponent } from './add-persona/add-persona.component';
 import { AddPlanetaComponent } from './add-planeta/add-planeta.component';
 import { ListPersonaComponent } from './list-persona/list-persona.component';
 import { ListPlanetaComponent } from './list-planeta/list-planeta.component';
+import { TopPlanetaComponent } from './top-planeta/top-planeta.component';
 import { PersonaEstado } from '../services/persona.estado';
 import { PlanetaEstado } from '../services/planeta.estado';
 
@@ -27,7 +28,8 @@ import { PlanetaEstado } from '../services/planeta.estado';
     AddPersonaComponent,
     AddPlanetaComponent,
     ListPersonaComponent,
-    ListPlanetaComponent
+    ListPlanetaComponent,
+    TopPlanetaComponent
 
   ],
   exports: [

@@ -74,7 +74,7 @@
         </div>
 
 
-    </div>    
+    </div>
 </form>
 
 <br />
@@ -103,8 +103,10 @@
         </ng-container>
         <ng-container matColumnDef="contador">
             <th mat-header-cell *matHeaderCellDef> Cantidad de visitas </th>
-            <td mat-cell *matCellDef="let persona"> {{persona.contador}} </td>
-        </ng-container>            
+            <td mat-cell *matCellDef="let persona">
+                <span matBadge="{{persona.contador}} " matBadgeOverlap="false" matBadgeColor="accent"></span>
+            </td>
+        </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
